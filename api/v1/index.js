@@ -5,6 +5,7 @@ import tvShows from './tvShows'
 import movieGenre from './movieGenre'
 import tvGenre from './tvGenre'
 import movie from './movie'
+import episode from './episode'
 
 const router = express.Router()
 
@@ -17,5 +18,6 @@ router.use('/tv-shows', tvShows)
 router.use('/movie-genre', movieGenre)
 router.use('/tv-show-genre', tvGenre)
 router.use('/movie', movie)
+router.use('/episode', episode)
 
 export default router
