@@ -26,7 +26,7 @@ export const getListGenre = ($, selector) => {
     return Array.from(gen).map(obj => {
       return {
         title: $(obj).text(),
-        slug: $(obj).attr('href')?.replace(`${TARGET_URL}/tv-show-genre/`, '')?.replace('/', '')
+        path: $(obj).attr('href')?.replace(TARGET_URL, '')
       }
     })
   })

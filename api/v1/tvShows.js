@@ -1,8 +1,8 @@
 import express from 'express'
-import { listResponse, failureResponse } from '../../helpers/response.js'
+import { listResponse, failureResponse } from '../../helpers/response'
 import cheerio from 'cheerio'
-import { api } from '../../config.js'
-import { getListPath, getListGenre, getListTitle, getListYear, getListThumbnail, getTotalPage } from '../../helpers/cheerio/tvShows.js'
+import { api } from '../../config'
+import { getListPath, getListGenre, getListTitle, getListYear, getListThumbnail, getTotalPage } from '../../helpers/cheerio/tvShows'
 
 const router = express.Router()
 

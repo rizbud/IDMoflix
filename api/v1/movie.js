@@ -1,7 +1,7 @@
 import express from 'express'
-import { successResponse, failureResponse } from '../../helpers/response.js'
+import { successResponse, failureResponse } from '../../helpers/response'
 import cheerio from 'cheerio'
-import { api, TARGET_URL } from '../../config.js'
+import { api, TARGET_URL } from '../../config'
 
 const router = express.Router()
 
@@ -20,7 +20,7 @@ router.get('/:slug', async (req, res) => {
       return Array.from(genres).map(el => {
         return {
           title: $(el).find('a').text(),
-          slug: $(el).find('a').attr('href')?.replace(`${TARGET_URL}/movie-genre/`, '')?.replace('/', '')
+          path: $(el).find('a').attr('href')?.replace(TARGET_URL, '')
         }
       })
     }
@@ -39,7 +39,7 @@ router.get('/:slug', async (req, res) => {
       duration: $(head).find('span[class="movie__meta--movie-run-time"]').text(),
       player_url: selector.find('div[class="movie__head"] > div[class="movie__player"] > p > iframe').attr('src'),
       download_link: getDownloadLink(),
-      genre: getGenres(),
+      genres: getGenres(),
     }
 
     successResponse(res, data)

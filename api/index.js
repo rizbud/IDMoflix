@@ -1,5 +1,5 @@
 import express from 'express'
-import { successResponse } from '../helpers/response.js'
+import { successResponse } from '../helpers/response'
 import v1 from './v1'
 
 const router = express.Router()

@@ -1,7 +1,7 @@
 import express from 'express'
-import { successResponse, failureResponse } from '../../helpers/response.js'
+import { successResponse, failureResponse } from '../../helpers/response'
 import cheerio from 'cheerio'
-import { api, TARGET_URL } from '../../config.js'
+import { api } from '../../config'
 
 const router = express.Router()
 
