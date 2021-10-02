@@ -7,7 +7,7 @@ import { getListPath, getListGenre, getListTitle, getListYear, getListThumbnail,
 const router = express.Router()
 
 router.get('/', async (req, res) => {
-  const {page = 1} = req?.params
+  const {page = 1} = req?.query
   try {
     const response = await api.get(`/movies/page/${page}`)
     const $ = cheerio.load(response.data)
