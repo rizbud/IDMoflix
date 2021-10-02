@@ -10,6 +10,9 @@ import movie from './movie'
 import episode from './episode'
 import tvShow from './tvShow'
 
+import searchMovie from './search/movies'
+import searchTvShows from './search/tvShows'
+
 const router = express.Router()
 
 router.get('/', (req, res) => {
@@ -23,5 +26,7 @@ router.use('/tv-show-genre', tvGenre)
 router.use('/movie', movie)
 router.use('/episode', episode)
 router.use('/tv-show', tvShow)
+router.use('/search/movies', searchMovie)
+router.use('/search/tv-shows', searchTvShows)
 
 export default router
