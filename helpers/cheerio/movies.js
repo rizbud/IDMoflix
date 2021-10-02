@@ -1,4 +1,4 @@
-import { TARGET_URL } from "../config"
+import { TARGET_URL } from "../../config"
 
 export const getListTitle = selector => {
   return selector.find('div > div[class="movie__body"] > div[class="movie__info"] > div[class="movie__info--head"] > a').text()
