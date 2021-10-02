@@ -39,5 +39,6 @@ export const getTotalPage = ($) => {
   const getPages = Array.from(pages).map(el => {
     return $(el).find('li > a').text()
   })
-  return getPages[getPages?.length - 2]
+  const totalPage = getPages?.length > 0 ? getPages[getPages?.length - 2] : 1
+  return totalPage
 }

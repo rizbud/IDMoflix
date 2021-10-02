@@ -3,7 +3,7 @@ import morgan from 'morgan'
 import cors from 'cors'
 
 import apiRouter from './api/index'
-import { successResponse } from './helpers/response'
+import { successResponse, failureResponse } from './helpers/response'
 import {APP_NAME} from './config'
 
 const app = express()
@@ -21,3 +21,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api', apiRouter)
+
+app.get('*', (req, res) => {
+  failureResponse(res, 404)
+})
