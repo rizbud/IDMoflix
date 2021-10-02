@@ -10,7 +10,7 @@ export const successResponse = (res, data, status = 200) => {
   })
 }
 
-export const failureResponse = (res, message = null, status = 400) => {
+export const failureResponse = (res, status = 400, message = null) => {
   return res.status(status).json({
     response: {
       status,
@@ -20,4 +20,12 @@ export const failureResponse = (res, message = null, status = 400) => {
       message: message || getReasonPhrase(status)
     }
   })
+}
+
+export const listResponse = (res, data, pagination) => {
+  res.set({
+    'Page': pagination?.page || 1,
+    'Total-Page': pagination?.totalPage || 1
+  })
+  return successResponse(res, data)
 }

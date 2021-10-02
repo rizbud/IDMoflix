@@ -24,4 +24,4 @@ app.get('/', (req, res) => {
   successResponse(res, {message: 'Welcome to IDMoflix'})
 })
 
-app.use(api, apiRouter)
+app.use('/api', apiRouter)
