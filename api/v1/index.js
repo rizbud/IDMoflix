@@ -1,7 +1,10 @@
 import express from 'express'
-import { successResponse } from '../../helpers/response.js'
-import movies from './movies.js'
-import tv from './tv.js'
+import { successResponse } from '../../helpers/response'
+import movies from './movies'
+import tvShows from './tvShows'
+import movieGenre from './movieGenre'
+import tvGenre from './tvGenre'
+import movie from './movie'
 
 const router = express.Router()
 
@@ -10,6 +13,9 @@ router.get('/', (req, res) => {
 })
 
 router.use('/movies', movies)
-router.use('/tv-shows', tv)
+router.use('/tv-shows', tvShows)
+router.use('/movie-genre', movieGenre)
+router.use('/tv-show-genre', tvGenre)
+router.use('/movie', movie)
 
 export default router

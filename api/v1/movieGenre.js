@@ -2,17 +2,17 @@ import express from 'express'
 import { listResponse, failureResponse } from '../../helpers/response.js'
 import cheerio from 'cheerio'
 import { api } from '../../config.js'
-import { getListPath, getListGenre, getListTitle, getListYear, getListThumbnail, getTotalPage } from '../../helpers/cheerio/tv.js'
+import { getListPath, getListGenre, getListTitle, getListYear, getListThumbnail, getTotalPage } from '../../helpers/cheerio/movies.js'
 
 const router = express.Router()
 
-router.get('/', async (req, res) => {
-  const {page = 1} = req?.params
+router.get('/:slug', async (req, res) => {
+  const {slug, page = 1} = req?.params
   try {
-    const response = await api.get(`/tv-shows/page/${page}`)
+    const response = await api.get(`/movie-genre/${slug}/page/${page}`)
     const $ = cheerio.load(response.data)
-    const tv = $('body').find('div[id="page"] > div[id="content"] > div[class="container"] > div[class="site-content__inner"] > div[id="primary"] > div[class="vodi-archive-wrapper"] > div[class="tv-shows columns-5"] > div[class="tv-shows__inner"] > div')
-    const data = Array.from(tv).map(el => {
+    const movies = $('body').find('div[id="page"] > div[id="content"] > div[class="container"] > div[class="site-content__inner"] > div[id="primary"] > div[class="vodi-archive-wrapper"] > div[class="movies columns-6"] > div[class="movies__inner"] > div')
+    const data = Array.from(movies).map(el => {
       const selector = $(el)
       
       return {
