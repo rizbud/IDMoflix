@@ -16,11 +16,11 @@ router.get('/:slug', async (req, res) => {
     const head = $(summary).find('div[class="movie__info--head"] > div[class="movie__info--head-inner"]')
 
     const getGenres = () => {
-      const genres = $(head).find('span[class="movie__meta--genre"]')
+      const genres = $(head).find('span[class="movie__meta--genre"] > a')
       return Array.from(genres).map(el => {
         return {
-          title: $(el).find('a').text(),
-          path: $(el).find('a').attr('href')?.replace(TARGET_URL, '')
+          title: $(el).text(),
+          path: $(el).attr('href')?.replace(TARGET_URL, '')
         }
       })
     }
