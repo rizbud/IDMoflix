@@ -1,13 +1,32 @@
 import express from 'express'
-import { successResponse } from '../../helpers/response.js'
-import genre from './genre.js'
+import { successResponse } from '../../helpers/response'
+import { APP_NAME } from '../../config'
+
+import movies from './movies'
+import tvShows from './tvShows'
+import movieGenre from './movieGenre'
+import tvGenre from './tvGenre'
+import movie from './movie'
+import episode from './episode'
+import tvShow from './tvShow'
+
+import searchMovie from './search/movies'
+import searchTvShows from './search/tvShows'
 
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  successResponse(res, {message: 'Welcome To IDMoflix API v1'})
+  successResponse(res, {message: `Welcome To ${APP_NAME} API v1`})
 })
 
-router.use('/genre', genre)
+router.use('/movies', movies)
+router.use('/tv-shows', tvShows)
+router.use('/movie-genre', movieGenre)
+router.use('/tv-show-genre', tvGenre)
+router.use('/movie', movie)
+router.use('/episode', episode)
+router.use('/tv-show', tvShow)
+router.use('/search/movies', searchMovie)
+router.use('/search/tv-shows', searchTvShows)
 
 export default router
