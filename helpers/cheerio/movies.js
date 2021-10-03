@@ -18,15 +18,12 @@ export const getListYear = selector => {
 }
 
 export const getListGenre = ($, selector) => {
-  const genres = selector.find('div > div[class="movie__body"] > div[class="movie__info"] > div[class="movie__info--head"] > div[class="movie__meta"] > span[class="movie__meta--genre"]')
+  const genres = selector.find('div > div[class="movie__body"] > div[class="movie__info"] > div[class="movie__info--head"] > div[class="movie__meta"] > span[class="movie__meta--genre"] > a')
   const genre = Array.from(genres).map(el => {
-    const gen = $(el).find('a')
-    return Array.from(gen).map(obj => {
-      return {
-        title: $(obj).text(),
-        path: $(obj).attr('href')?.replace(TARGET_URL, '')
-      }
-    })
+    return {
+      title: $(el).text(),
+      path: $(el).attr('href')?.replace(TARGET_URL, '')
+    }
   })
 
   return genre
